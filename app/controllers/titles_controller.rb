@@ -4,7 +4,8 @@ class TitlesController < ApplicationController
   # GET /titles
   # GET /titles.json
   def index
-    @titles = Title.all
+    response = HTTParty.get('http://54.244.115.182/pics')
+    @data = JSON.parse(response.body)
   end
 
   # GET /titles/1

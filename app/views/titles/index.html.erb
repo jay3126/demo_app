@@ -1,25 +1,20 @@
-<h1>Listing titles</h1>
-
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th style="width:45px">Sl. No.</th>
+      <th style="width:1030px">Title Name</th>
+      <th style="width:45px">Image</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @titles.each do |title| %>
+    <% sl_no = 0 %>
+    <% @data.values.first.each do |data| %>
       <tr>
-        <td><%= link_to 'Show', title %></td>
-        <td><%= link_to 'Edit', edit_title_path(title) %></td>
-        <td><%= link_to 'Destroy', title, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= sl_no += 1 %></td>
+        <td><%= data["title"]%></td>
+        <td><%= image_tag(data["url"], {:size => "300x300"}) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Title', new_title_path %>
