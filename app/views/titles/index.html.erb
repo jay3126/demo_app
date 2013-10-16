@@ -1,3 +1,4 @@
+<h3>Image List with Title Name</h3>
 <table>
   <thead>
     <tr>
@@ -13,8 +14,19 @@
       <tr>
         <td><%= sl_no += 1 %></td>
         <td><%= data["title"]%></td>
-        <td><%= image_tag(data["url"], {:size => "300x300"}) %></td>
+        <td class="img"><%= image_tag(data["url"], {:size => "300x300"}) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<script>
+  $(function() {
+    $(".img").draggable();
+    $(".img").droppable({
+    	drop: function( event, ui ) {
+        $(this).remove();
+      }
+    });
+  });
+</script>
